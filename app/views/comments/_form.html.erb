@@ -1,0 +1,13 @@
+<h2><%= Post.last.comments.count%> Number of Comments</h2>
+<%= form_for [@post,@comment] do |f|%>
+	<%= f.label :name %>
+	<%= f.text_field :name%>
+
+	<br>
+	<br>
+	<%= f.label :body %>
+	<%= f.text_area :body%>
+	<br>
+	<br>
+	<%= f.submit %>
+<%end%>

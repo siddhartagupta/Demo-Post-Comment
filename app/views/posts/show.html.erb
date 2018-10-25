@@ -1,0 +1,13 @@
+<%= @post.title %>
+<br>
+<br>
+<%= @post.content%>
+<br>
+<br>
+<%= link_to "Add Comment", new_post_comment_path(post_id: @post.id) %>
+<br>
+<br>
+<%= link_to 'edit' ,edit_post_path(@post) %>
+<br>
+<br>
+<%= link_to 'delete',post_path(@post),method: :delete ,data: {:confirm => 'Are you sure?'} %>
