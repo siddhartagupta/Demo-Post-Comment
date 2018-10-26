@@ -1,0 +1,43 @@
+<h1>Welcome#index</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th scope="col">Date</th>
+      <td scope="col">Add commets</td>
+    </tr>
+  </thead>
+  <tbody>
+      <% @poast_all.each do |p|%>
+        <tr>
+          <td><%= p.user.email%></td>
+          <td><%= p.title %></td>
+          <td><%= p.content %></td>
+          <td><%= p.created_at.strftime("%F") %></td>
+          <td><%= link_to 'Comments', new_post_comment_path(p) %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Image</th>
+      <th scope="col">Date</th>
+      <td scope="col">Add commets</td>
+    </tr>
+  </thead>
+  <tbody>
+      <% @image_all.each do |p|%>
+        <tr>  
+           <td><%= p.user.try(:email) %></td>
+          <td><%= image_tag p.image.url %></td>
+         <td><%= p.created_at.strftime("%F") %></td>
+          <td><%= link_to 'Comments', new_image_comment_path(p) %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>

@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
-	has_many :image_comment
+	has_many :comments, as: :commentable
 	belongs_to :user
 	has_attached_file :image
 	validates_attachment :image,

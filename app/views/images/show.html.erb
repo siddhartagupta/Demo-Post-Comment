@@ -3,4 +3,8 @@
 <%= image_tag @image.image.url %>
 <br>
 <br>
-<%= link_to 'Comments', new_image_image_comment_path %>
+<h5>View Comments</h5>
+<% @image.comments.each do |p|%>
+	<%= p.name%>
+	<%= p.body%>
+<% end %>
