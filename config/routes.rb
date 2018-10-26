@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 	root to: "home#index"
   resources :welcome, only: [:index]
    resources :posts do
-   	resources :comments 
+   	resources :comments
    end
 	resources :images do
-		resources :comments 
+		resources :comments
 	end
    resources :home, only: [:index]
    resources :about, only: [:index]

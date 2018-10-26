@@ -1,24 +1,24 @@
 class CommentsController < ApplicationController
-	before_action :set_post, only: [:new, :create,:index,:show]
-	def new
-		@comment=Comment.new
-		@comments=Post.last.comments.order(created_at: :desc)
-	end
-	def  create
-		@comment = @post.comments.build(comment_params)
-		p @comment
-			if @comment.save
-	 			redirect_to  new_post_comment_path(@post) ,notice: 'Hello friends'
-			else
-				render 'new' ,notice: @comment.errors.full_messages.join(', ')
-			end
-	end
-	private
-		def set_post
-			@post= Post.find(params[:post_id])
-		end
+    before_action :authenticate_user!
 
-		def comment_params
-			params.require(:comment).permit(:name,:body)
-		end
+    def create
+        @commentable = find_commentable
+        @comment = @commentable.comments.build comment_params
+        @comment.save
+            redirect_to @commentable, notice: "Your comment was successfully posted."
+    end
+
+    def find_commentable
+      params.each do |name, value|
+          if name =~ /(.+)_id$/
+              return $1.classify.constantize.find(value)
+          end
+      end
+    end
+    private
+
+        def comment_params
+            params.require(:comment).permit(:name,:body)
+        end
+
 end

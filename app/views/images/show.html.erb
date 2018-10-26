@@ -4,7 +4,6 @@
 <br>
 <br>
 <h5>View Comments</h5>
-<% @image.comments.each do |p|%>
-	<%= p.name%>
-	<%= p.body%>
-<% end %>
+<%= render partial: "comments/comments", locals: {commentable: @image} %>
+<h5>Add New Comments</h5>
+<%= render partial: "comments/form", locals: {commentable: @image} %>
