@@ -1,6 +1,8 @@
 Recaptcha.configure do |config|
-  config.site_key  = '6LdT-HgUAAAAAK9hnTouzSgU6gtHxqN9TITClHuz'
-  config.secret_key = '6LdT-HgUAAAAAGnjaqEJIIZ6dewM5cskJ1ZeRmKv'
-  # Uncomment the following line if you are using a proxy server:
-  # config.proxy = 'http://myproxy.com.au:8080'
+  Recaptcha.configure do |config|
+    config.site_key  = '6LdbmVEUAAAAAMEma6ygrkmGAyJKylVOP8uVRC0_'
+ 	config.secret_key = '6LdbmVEUAAAAAMihk5I_tObncA3AhLUZD3WAcc6s'
+ # Uncomment the following line if you are using a proxy server:
+ # config.proxy = 'http://myproxy.com.au:8080'
+end
 end
